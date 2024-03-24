@@ -120,7 +120,7 @@
 <?php
   // Path untuk gambar
   $soba = 'assets/img/soba.png';
-  $gmr1 ='assets/img/46.jpg';
+  $maps ='assets/img/soba-map.jpg';
   $gmr2 ='assets/img/47.jpg';
   $gmr3 ='assets/img/49.jpg';
   ?>
@@ -145,7 +145,8 @@ Desa soba memiliki 4 dusun dan 16 RT dan 7 RW. App ini digunakan untuk menginput
     <h4 style="color:#763C00"> <b>MAPS</b></h4>
   </div>
   <div class="card-body">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2103.423072880153!2d123.72273008568963!3d-10.283347320780363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c568910db519bf7%3A0xc6773e120c112ec4!2sKANTOR%20DESA%20SOBA!5e0!3m2!1sid!2sid!4v1709702908043!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <img style="width: 800px; border-radius: 6px;" src="<?= $maps ?>" alt="Foto Maps Desa Soba">
+
   </div>
 </div>
 <div class="mps">

@@ -60,6 +60,10 @@
         <i class="fa fa-plus"></i>
         Tambah Data KK
       </a>
+      <a href="kelola_anggota_kk.php" type="button" class="btn btn-outline-warning mb-3">
+        <i class="fa fa-plus"></i>
+        Tambah Anggota Keluarga
+        </a>
       <div class="search-bar">
         Cari Data: <input type="text" name="rt_rw" id="searchInput" placeholder="Cari Data">
       </div>
@@ -89,7 +93,7 @@
                 <td><center>
                   <?php echo ++$no; ?>.
                 </center></td>
-                <td><a href="anggota_kk.php?id=<?php echo $result['no_kk']; ?>"><?php echo $result['no_kk']; ?></a></td>
+                <td><a href="anggota_kk.php?id_kk=<?php echo $result['no_kk']; ?>&nama=<?php echo $result['kepala_keluarga']; ?>"><?php echo $result['no_kk']; ?></a></td>
                 <td><?php echo $result['kepala_keluarga']; ?></td>
                 <td><?php echo $result['alamat']; ?></td>
                 <td><?php echo $result['rt_rw']; ?></td>
@@ -99,11 +103,11 @@
                 <td>Kabupaten Kupang</td>
                 <td>NTT</td>
                 <td>
-                  <a href="kelola_data_m.php?ubah=<?php echo $result['no_kk']; ?>" type="button" class="btn btn-primary btn-sm">
+                  <a href="kelola_data_m.php?ubah=<?php echo $result['kk_id']; ?>" type="button" class="btn btn-primary btn-sm">
                     <i class="fa fa-pencil"></i>
                     Edit
                   </a>
-                  <a href="proses_masyarakat.php?hapus=<?php echo $result['no_kk']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut?')">
+                  <a href="proses_masyarakat.php?hapus=<?php echo $result['kk_id']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut?')">
                     <i class="fa fa-trash"></i>
                   </a>
                     <!-- <a href="cetak_acara.php?id=<?php echo $result['no_kk']; ?>" type="button" class="btn btn-secondary btn-sm" target="_blank">
@@ -118,10 +122,6 @@
           </tbody>
           </table>
 
-        <a href="kelola_anggota_kk.php" type="button" class="btn btn-outline-warning mb-3">
-        <i class="fa fa-plus"></i>
-        Tambah Anggota Keluarga
-        </a>
         </div>
 
         

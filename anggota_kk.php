@@ -1,11 +1,14 @@
 <?php
 
   require "koneksi.php";
+  // require "data_masyarakat.php";
 
-  $no_kk = $_GET['id'];
+  $no_kk = $_GET['id_kk'];
+  // $kepala_keluarga = $_GET['kepala_keluarga'];
 
   $query = "SELECT * FROM anggota_kk WHERE no_kk = '$no_kk'";
   $query2 = "SELECT * FROM kartu_keluarga JOIN anggota_kk ON anggota_kk.no_kk = kartu_keluarga.no_kk";
+  // $query3 = "SELECT * FROM anggota_kk WHERE kepala_keluarga = '$kepala_keluarga'";
   // $query3 = "SELECT * FROM kegiatan WHERE id_acara = $id_acara"; 
   // $query4 = "SELECT * FROM acara";
   
@@ -46,7 +49,7 @@
   
   <!-- Judul -->
   <div class="container">
-      <h1 class="mt-4" style="color: #763c00">DAFTAR ANGGOTA KELUARGA</h1>
+      <h1 class="mt-4" style="color: #763c00">DAFTAR ANGGOTA KELUARGA </h1>
       <figure>
       <blockquote class="blockquote">
         <p>Berikut adalah data yang telah disimpan di database.</p>
@@ -55,10 +58,6 @@
       <blockquote class="blockquote">
         <p>Anggota Keluarga</p>
       </blockquote>
-      <a href="kelola_anggota_kk.php" type="button" class="btn btn-outline-warning mb-3">
-        <i class="fa fa-plus"></i>
-        Tambah Anggota Keluarga
-      </a>
       <div class="table-responsive">
           <table class="table align-middle table-bordered table-hover">
             <thead>
@@ -97,7 +96,7 @@
                     <i class="fa fa-pencil"></i>
                     Edit
                   </a>
-                  <a href="proses_anggota_kk.php?hapus=<?php echo $result['id']; ?>&id=<?php echo $id; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut?')">
+                  <a href="proses_anggota_kk.php?hapus=<?php echo $result['id']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut?')">
                     <i class="fa fa-trash"></i>
                   </a>
                 </td>
@@ -112,35 +111,11 @@
         
   </div>
 
-  <script>
-    const pekerja = document.getElementById('pekerja');
-    const button = document.getElementById('tambah_pekerja');
+  <!-- <script>
+    const hapus = document.getElementById('hapus');
 
-    button.addEventListener('click', () => {
-      pekerja.style.display = pekerja.style.display === 'none' ? 'block' : 'none';
-    })
 
-   const select = document.getElementsByClassName('absenSelect')
-   Array.from(select).forEach(s=>{
-     s.addEventListener('change', function() {
-        var selectedValue = this.value;
-        console.log(selectedValue)
-  
-        const data = this.getAttribute('data-id-pekerja');
-  
-        const bodyData = 'id_pekerja=' + encodeURIComponent(data) + '&absen=' + encodeURIComponent(selectedValue);
-  
-        fetch('submit_pekerja.php?type=absen&id_acara=<?php echo $id_acara; ?>', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: bodyData
-        }).then(data=> location.reload(true))
-      })
-
-   })
-  </script>
+  </script> -->
 
 </body>
 </html>

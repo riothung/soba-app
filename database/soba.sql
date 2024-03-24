@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 05:27 AM
+-- Generation Time: Mar 19, 2024 at 11:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,8 +45,11 @@ CREATE TABLE `anggota_kk` (
 --
 
 INSERT INTO `anggota_kk` (`id`, `nama_lengkap`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jenis_pekerjaan`, `no_kk`) VALUES
-(29, 'Rio', 2147483647, 'laki-laki', 'Kupang', '2023-02-10', 'Buddha', 'S3 dan Sederajat', 'Perangkat', 923492384),
-(30, 'Afni', 2343232, 'perempuan', 'Kakjsdask', '2023-02-10', 'Buddha', 'Diploma 1-3', 'Buruh Bangunan', 89999);
+(43, 'pqpweoqw', 2394242, 'Perempuan', 'axzasdas', '2023-02-16', 'Protestan', 'SD dan Sederajat', 'Tidak Bekerja', 89999),
+(44, 'Yongki', 283743284, 'Laki-laki', 'akasjdsa', '2023-02-17', 'Buddha', 'SMP dan Sederajat', 'Buruh Bangunan', 12345),
+(45, 'Hendrik', 23498234, 'Perempuan', 'sadkashdja', '2023-02-17', 'Protestan', 'SMP dan Sederajat', 'Pedagang Kecil', 12345),
+(50, 'Edis', 23498273, 'Perempuan', 'askjdaskd', '2023-02-18', 'Protestan', 'SMP dan Sederajat', 'Tidak Bekerja', 12345),
+(51, 'Agus', 23498273, 'Laki-laki', 'askjdaskd', '2023-02-18', 'Protestan', 'SD dan Sederajat', 'Buruh Bangunan', 12345);
 
 -- --------------------------------------------------------
 
@@ -59,17 +62,22 @@ CREATE TABLE `kartu_keluarga` (
   `kepala_keluarga` varchar(100) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `rt_rw` varchar(100) NOT NULL,
-  `kode_pos` int(10) NOT NULL
+  `kode_pos` int(10) NOT NULL,
+  `dusun` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kartu_keluarga`
 --
 
-INSERT INTO `kartu_keluarga` (`no_kk`, `kepala_keluarga`, `alamat`, `rt_rw`, `kode_pos`) VALUES
-(12345, 'Andi NTT', 'Soba', '02/01', 12345),
-(89999, 'ARDS Yoksan', 'Soba', '05/02', 7896),
-(923492384, 'bayu', 'soba', '04/02', 9234);
+INSERT INTO `kartu_keluarga` (`no_kk`, `kepala_keluarga`, `alamat`, `rt_rw`, `kode_pos`, `dusun`) VALUES
+(12345, 'Andi NTT', 'Soba', '', 12345, 3),
+(89999, 'ARDS Yoksan', 'Soba', '06/02', 7896, 0),
+(23473284, 'Abe', 'Kupang', '12/02', 2138, 4),
+(213813891, 'Avila', 'Kupang', '05/02', 21381, 4),
+(234932842, 'Yohan', 'soba', '02/01', 3294, 4),
+(923492384, 'bayu', 'soba', '01/01', 9234, 0),
+(2147483647, 'Andika', 'soba', '06/02', 234923, 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +131,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `anggota_kk`
 --
 ALTER TABLE `anggota_kk`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

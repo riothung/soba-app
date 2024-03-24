@@ -32,7 +32,8 @@
         $jenis_pekerjaan = $result['jenis_pekerjaan'];
         $no_kk = $result['no_kk'];
     }
-    
+
+    // $no_kk = $_GET['id_kk'];
 ?>
 
 <html lang="en">
@@ -64,16 +65,14 @@
         <h4>Anggota Keluarga</h4>
       </blockquote>
       </figure>
-      <?php
-    if(isset($_GET['ubah'])){
-        ?>
-    <form action="proses_anggota_kk.php?id_kk=<?php echo urlencode($result['no_kk']); ?>" method="POST" enctype="multipart/form-data">
-    <?php }else{
+      <?php if(isset($_GET['ubah'])){
     ?>
-        <form action="proses_anggota_kk.php" method="POST" enctype="multipart/form-data">
-    <?php
-    } ?>
-        <input type="hidden" value="<?php echo $id; ?>" name="id" class="mt-4">
+    <form action="proses_anggota_kk.php?id_kk=<?php echo $result['no_kk']; ?>" method="POST" enctype="multipart/form-data">
+    <?php }else{ ?>
+       <form action="proses_anggota_kk.php" method="POST" enctype="multipart/form-data"> 
+    <?php } ?>
+
+        <input type="hidden" value="<?php echo $id ?>" name="id" class="mt-4">
          <div class="mb-3 row mt-4">
                 <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-10">
@@ -161,30 +160,33 @@
                 </div>
             </div>
 
-            <div class="mb-3 row mt-4">
-                <label for="no_kk" class="col-sm-2 col-form-label">Kartu Keluarga</label>
+            <!-- <div class="mb-3 row mt-4">
+                <label for="nomor_kk" class="col-sm-2 col-form-label">Kartu Keluarga</label>
                 <select name="no_kk" class="form-control">
             <?php
-            $queryKK = "SELECT * FROM kartu_keluarga";
-            $sqlKK = mysqli_query($conn, $queryKK);
+            $queryKk = "SELECT * FROM kartu_keluarga";
+            $sqlKk = mysqli_query($conn, $queryKk);
 
-            if ($sqlKK) {
-                while ($row = mysqli_fetch_assoc($sqlKK)) {
+            if($sqlKk){
+                while ($row = mysqli_fetch_assoc($sqlKk)) {
                     // Inside this loop, $row represents a single row of the result set
                     echo '<option value="' . $row['no_kk'] . '">' . $row['kepala_keluarga'] . '</option>';
                 }
-            } else {
+            }else{
                 // Handle the case where the query fails
                 echo "Error: " . mysqli_error($conn);
             }
 
             // Don't forget to free the result set when you're done with it
-            mysqli_free_result($sqlKK);
+            mysqli_free_result($sqlKk);
             ?>
             </select>
                 
-            </div>
+            </div> -->
                 
+
+
+           
             <div class="mb-3 row mt-4">
                 <div class="col">
                     <?php
@@ -204,10 +206,23 @@
                             <?php
                         }
                         ?>
-                       <a href="data_masyarakat.php" type="button" class="btn btn-danger">
+                        <?php
+                        if(isset($_GET['ubah'])){
+                            ?>
+                       <a href="anggota_kk.php?id_kk=<?php echo $result['no_kk']; ?>" type="button" class="btn btn-danger">
                         <i class="fa fa-reply" aria-hidden="true"></i>
                         Batal
                         </a>
+                        <?php
+                        }else{
+                            ?>
+                             <a href="anggota_kk.php?id_kk=<?php echo $result['no_kk']; ?>" type="button" class="btn btn-danger">
+                        <i class="fa fa-reply" aria-hidden="true"></i>
+                        Batal
+                         </a>
+                            <?php
+                        }
+                        ?>
                    
             </div>
             
@@ -216,11 +231,6 @@
     </form>
     
 </div>
-    
-    
-    
-    
-    
     
 </body>
 </html>

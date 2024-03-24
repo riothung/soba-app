@@ -4,28 +4,28 @@
     require "koneksi.php";
 
     // $nomor = "";
+    // $id = "";
     $no_kk = "";
     $kepala_keluarga = "";
     $alamat = "";
     $rt_rw = "";
     $kode_pos = "";
-    $dusun = "";
 
     if(isset($_GET['ubah'])){
-        $no_kk = $_GET['ubah'];
+        $kk_id = $_GET['ubah'];
         
-        $query = "SELECT * FROM kartu_keluarga WHERE no_kk = '$no_kk'";
+        $query = "SELECT * FROM kartu_keluarga WHERE kk_id = '$kk_id'";
         $sql = mysqli_query($conn, $query);
 
         $result = mysqli_fetch_assoc($sql);
 
+        $no_kk = $result['no_kk'];
         $kepala_keluarga = $result['kepala_keluarga'];
         $alamat = $result['alamat'];
         $rt_rw = $result['rt_rw'];
         $kode_pos = $result['kode_pos'];
-        $dusun = $result['dusun'];
-       
     }
+    // $no_kk = $_GET['id_kk'];
 ?>
 
 <html lang="en">
@@ -54,12 +54,11 @@
 <div class="container">
     <?php if(isset($_GET['ubah'])){
     ?>
-    <form action="proses_masyarakat.php?no_kk=<?php echo $no_kk ?>" method="POST" enctype="multipart/form-data">
+        <form action="proses_masyarakat.php?kk_id=<?php echo $kk_id ?>" method="POST" enctype="multipart/form-data">
     <?php }else{ ?>
-       <form action="proses_masyarakat.php" method="POST" enctype="multipart/form-data"> 
+        <form action="proses_masyarakat.php" method="POST" enctype="multipart/form-data"> 
     <?php } ?>
-
-        <input type="hidden" value="add" name="no_kk" class="mt-4">
+    <input type="hidden" value="add" name="no_kk" class="mt-4">
 
      <figure style="margin-top: 20px;">
       <blockquote class="blockquote">
@@ -88,24 +87,24 @@
     <div class="row">
     <label for="rt_rw" class="col-sm-2 col-form-label mt-3">Pilih RT/RW</label>
     <div class="col-md-10 form-group mt-3">
-        <input class="form-control" style="height: 45px" list="daftar_rt_rw" name="rt_rw" id="rt_rw" placeholder="Pilih RT/RW">
+        <input class="form-control" style="height: 45px" list="daftar_rt_rw" name="rt_rw" id="rt_rw" placeholder="Pilih RT/RW" required>
         <datalist id="daftar_rt_rw">
             <option value="01/01">
             <option value="02/01">
             <option value="03/02">
             <option value="04/02">
             <option value="05/02">
-            <option value="06/02">
-            <option value="07/02">
-            <option value="08/02">
-            <option value="09/02">
-            <option value="10/02">
-            <option value="11/02">
-            <option value="12/02">
-            <option value="13/02">
-            <option value="14/02">
-            <option value="15/02">
-            <option value="16/02">
+            <option value="06/03">
+            <option value="07/03">
+            <option value="08/03">
+            <option value="09/04">
+            <option value="10/04">
+            <option value="11/05">
+            <option value="12/05">
+            <option value="13/06">
+            <option value="14/06">
+            <option value="15/07">
+            <option value="16/07">
         </datalist>  
     </div>
     </div>
@@ -115,7 +114,7 @@
                     <input autocomplete="off" required type="number" name="kode_pos" class="form-control" id="kode_pos" placeholder="Masukan Kode Pos" value="<?php echo $kode_pos; ?>">
                 </div>
             </div>
-            <div class="mb-3 row mt-4">
+            <!-- <div class="mb-3 row mt-4">
             <label for="dusun" class="col-sm-2 col-form-label">Dusun</label>
             <select name="dusun" id="dusun" class="form-control" required>
                 <option value="" disabled selected>Pilih Dusun</option>
@@ -124,7 +123,8 @@
                 <option value="02">Dusun 02</option>
                 <option value="01">Dusun 01</option>
             </select>
-            </div>
+            </div> -->
+            
 
             <div class="mb-3 row mt-4">
                 <div class="col">
